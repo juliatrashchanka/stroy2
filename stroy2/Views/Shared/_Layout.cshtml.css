@@ -2,10 +2,10 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-    color: #0077cc;
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  color: #0077cc;
 }
 
 a {
@@ -49,19 +49,19 @@ button.accept-policy {
     white-space: nowrap;
     line-height: 60px;
 }
-.company_inf {
+/*.company_inf {
     background-color: #FFFCD9;
-    display: flex;
+    display: flex;*/
     /* display: inline-block; */
-    flex-direction: row;
+    /*flex-direction: row;
 }
 
 .inf_img {
     max-width: 40%;
     max-height: 50%;
-    box-shadow: 10px 10px 15px 0px #393d3ff8;
+    box-shadow: 10px 10px 15px 0px #393d3ff8;*/
     /* margin-right: 60%; */
-}
+/*}
 
 .inf_text_box {
     display: flex;
@@ -86,4 +86,4 @@ button.accept-policy {
 
 .dop {
     height: 20vh;
-}
+}*/
