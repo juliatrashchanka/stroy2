@@ -17,8 +17,20 @@ namespace stroy2.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+    
+        public IActionResult Feedback()
+        {
+            return View();
+        }
+        public IActionResult Projects()
+        {
+            return View();
+        }
+        public IActionResult Documents()
+        {
+            return View();
+        }
+        public IActionResult Contacts()
         {
             return View();
         }

@@ -2,9 +2,10 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    color: #0077cc;
 }
 
 a {
@@ -40,9 +41,49 @@ button.accept-policy {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    background-color: #004A59;
+    color: #FFFCD9;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+.company_inf {
+    background-color: #FFFCD9;
+    display: flex;
+    /* display: inline-block; */
+    flex-direction: row;
+}
+
+.inf_img {
+    max-width: 40%;
+    max-height: 50%;
+    box-shadow: 10px 10px 15px 0px #393d3ff8;
+    /* margin-right: 60%; */
+}
+
+.inf_text_box {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 2vh;
+}
+
+.inf_text_main {
+    color: #2e2e41;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.inf_text {
+    text-align: left;
+    font-family: sans-serif;
+    color: #2e2e41;
+    width: 90%;
+}
+
+.dop {
+    height: 20vh;
 }
