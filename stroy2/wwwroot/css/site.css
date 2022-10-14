@@ -17,6 +17,69 @@ body {
     margin-bottom: 60px;
     overflow: auto;
     text-align: center;
-    background-color: #755244d5;
+    background-color: #FFFCD9;
 }
 
+
+
+.main_box {
+    display: flex;
+    background-image: url(https://homesbytradition.com/wp-content/uploads/2015/08/build.jpg);
+    /* background-position: center; */
+    background-size: cover;
+    min-height: 55vh;
+    box-shadow: 10px 10px 15px 0px #635047f8;
+    /* width: 100vw; */
+}
+
+.main_text {
+    justify-content: right;
+    align-items: flex-end;
+    display: flex;
+    margin-left: auto;
+    margin-bottom: 3%;
+    color: rgb(255, 255, 255);
+    font-size: 9vh;
+    padding: 1vh 1vh 1vh 1vh;
+    /* width: 100vw; */
+}
+
+
+.company_inf {
+    background-color: #FFFCD9;
+    display: flex;
+/* display: inline-block; */
+    flex-direction: row;
+}
+
+.inf_img {
+    max-width: 40%;
+    max-height: 50%;
+    box-shadow: 10px 10px 15px 0px #393d3ff8;*/
+/* margin-right: 60%; */
+}
+
+.inf_text_box {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 2vh;
+}
+
+.inf_text_main {
+    color: #2e2e41;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.inf_text {
+    text-align: left;
+    font-family: sans-serif;
+    color: #2e2e41;
+    width: 90%;
+}
+
+.dop {
+    height: 20vh;
+}
