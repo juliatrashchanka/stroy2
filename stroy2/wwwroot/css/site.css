@@ -45,17 +45,18 @@ body {
 }
 
 
+
 .company_inf {
     background-color: #a79c5ff8;
     display: flex;
-/* display: inline-block; */
+    /* display: inline-block; */
     flex-direction: row;
 }
 
 .inf_img {
     max-width: 40%;
     max-height: 50%;
-    box-shadow: 10px 10px 15px 0px #393d3ff8;*/
+    box-shadow: 10px 10px 15px 0px #393d3ff8;
 /* margin-right: 60%; */
 }
 
@@ -81,5 +82,45 @@ body {
 }
 
 .dop {
-    height: 20vh;
+    height: 50px;
 }
+
+.dop-new {
+    height: 300px;
+}
+
+.services_box_top {
+    display: flex;
+    background-image: url( https://www.prereal.com/uploads/load-imagetools.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+.services_box {
+    background-color: rgb(255, 252, 217, 0.8);
+    display: flex;
+    flex-direction: column;
+    height: 88vh;
+    width: 65%;
+    margin-top: 4%;
+    margin-bottom: 6%;
+    margin-left: 8%;
+    margin-right: 40%;
+}
+
+.services_title {
+    margin-top: 5%;
+    font-size: 2vw;
+    margin-bottom: 2%;
+}
+
+.services_text {
+    display: flex;
+    text-align: left;
+    margin-left: 4%;
+    font-size: 2.5vh;
+}
+
+    .services_text li {
+        margin-bottom: 2%;
+    }
