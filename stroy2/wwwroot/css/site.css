@@ -124,4 +124,23 @@ body {
     font-size: 2.5vh;
 }
 
-    
+.container-form {
+    display: flexBOX;
+
+    border: 3px solid;
+    border-radius: 10px;
+    padding-top: 2%;
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 40%;
+    box-sizing: border-box;
+    border-color: #393d3ff8;
+    background-color: #e0d787f8;
+    /*box-shadow: 10px 10px 30px 0px*/ /*#004a59*//*;*/
+}
+.form-title {
+    margin-bottom: 7%;
+    font-size: 3vh;
+}
