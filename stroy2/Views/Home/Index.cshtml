@@ -193,26 +193,26 @@
         <div class="container-form">
             <div class=' pb-2 border-bottom form-title'>Оставьте заявку на консультацию:</div>
 
-        <form class="row g-5 needs-validation" novalidate>
+        <form class="row g-5 needs-validation" id="ConsForm" novalidate>
               <div class="col-md-4">
-                <label for="validationCustom01" class="form-label">Ваше имя</label>
-                <input type="text" class="form-control" id="validationCustom01" value="" required>
+                    <label for="Name" class="form-label">Ваше имя</label>
+                <input type="text" name="Name" class="form-control" id="Name" value="" required>
              
               </div>
 
 
               <div class="col-md-4">
-                <label for="validationCustom02" class="form-label">Фамилия</label>
-                <input type="text" class="form-control" id="validationCustom02" value="" required>
+                    <label for="LastName" class="form-label">Фамилия</label>
+                    <input type="text" name="LastName" class="form-control" id="LastName" value="" required>
                
               </div>
 
 
               <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">Ваш email</label>
+                    <label for="Email" class="form-label">Ваш email</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend">@@</span>
-                  <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                  <input type="text" name="Email" class="form-control" id="Email" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback">
                     Введите email.
                   </div>
@@ -220,10 +220,10 @@
               </div>
 
             <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">Ваш телефон</label>
+                    <label for="Number" class="form-label">Ваш телефон</label>
                 <div class="input-group has-validation">
                     @*<span class="input-group-text" id="inputGroupPrepend"></span>*@
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                    <input type="text" class="form-control" id="Number" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback">
                         Введите ваш телефон.
                     </div>
@@ -232,18 +232,18 @@
 
 
               <div class="col-md-3">
-                <label for="validationCustom03" class="form-label">Город</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
+                    <label for="City" class="form-label">Город</label>
+                <input type="text" class="form-control" id="City" required>
                 <div class="invalid-feedback">
                   Введите город.
                 </div>
               </div>
 
             <div class="col-md-9">
-                <label for="validationCustom03" class="form-label">Сообщение</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
+                    <label for="Letter" class="form-label">Сообщение</label>
+                <input type="text" class="form-control" id="Letter" required>
                 <div class="invalid-feedback">
-                    Please provide a valid city.
+                    Введите сообщение.
                 </div>
             </div>
 
@@ -260,13 +260,75 @@
                 </div>
               </div>*@
               <div class="col-12">
-                <button class="btn btn-dark" type="submit">Отправить</button>
+                    <button class="btn btn-dark" id="btnGet" type="submit">Отправить</button>
               </div>
             </form>
         </div>
 
-          
-        
+   @*     <input type="text" id="txtName" />
+        <input type="button" id="btnGet" value="Get Current Time" />*@
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#btnGet").click(function () {
+                    debugger;
+
+                   let datata = {
+
+                    "name": $("#Name").val() ,
+                    "lastname": $("#LastName").val(),
+                    "email": $("#Email").val(),
+                    "number": $("#Number").val(),
+                    "city": $("#City").val(),
+                    "letter": $("#Letter").val()
+
+                    //{ "lastname": $("#LastName").val() }
+                   }       //{},
+               
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/GetData",
+                        data: datata,//{ "name": $("#Name").val() }, /*{ "lastname": $("#LastName").val() }, { "email": $("#Email").val() }, { "number": $("#Number").val() }, { "city": $("#City").val() }, { "letter": $("#Letter").val() },*/
+                        success: function (response) {
+                            alert("Hello: ");
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
+
+          @*JQuery*@ 
+    @*   <input type="text" id="txtName"/>
+        <input type="button" id="btnGet" value="Get Current Time"/>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+          $(function () {
+            $("#btnGet").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/GetDate",
+                    data: { "name": $("#txtName").val() },
+                    success: function (response) {
+                        alert("Hello: " + response.Name + " .\nCurrent Date and Time: " + response.DateTime);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                   }
+                });
+            });
+        });
+        </script>*@
+
+
         <div class='dop-new'></div>
 
           @*  <Services />*@
