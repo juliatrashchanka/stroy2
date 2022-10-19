@@ -53,7 +53,8 @@ button.accept-policy {
     width: 100%;
     white-space: nowrap;
     line-height: 25px;
-    margin-top: 10vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
 }
 /*.company_inf {
     background-color: #FFFCD9;

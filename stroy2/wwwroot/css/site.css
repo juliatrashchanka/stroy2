@@ -127,8 +127,8 @@ body {
 .container-form {
     display: flexBOX;
 
-    border: 3px solid;
-    border-radius: 10px;
+    /*border: 1px solid;*/
+    border-radius: 5px;
     padding-top: 2%;
     padding: 5%;
     margin-top: 5%;
@@ -138,7 +138,7 @@ body {
     box-sizing: border-box;
     border-color: #393d3ff8;
     background-color: #e0d787f8;
-    /*box-shadow: 10px 10px 30px 0px*/ /*#004a59*//*;*/
+    box-shadow: 10px 10px 20px 0px #393d3ff8;
 }
 .form-title {
     margin-bottom: 7%;
@@ -148,3 +148,41 @@ body {
 .project{
     background-color: #a79c5ff8
 }
+
+
+.card {
+    display: flex;
+    margin: 0;
+}
+
+.contacts {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    background-color: #398691;
+}
+
+.contacts_box {
+    /* width: 10vw; */
+    display: flexBOX;
+    border: 5px solid;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 40%;
+    box-sizing: border-box;
+    border-color: #FFFCD9;
+    background-color: #FFFCD9;
+    box-shadow: 10px 10px 40px 0px #004a59;
+}
+
+    .contacts_box p {
+        /* display: flex; */
+        font-family: sans-serif;
+        display: flexBOX;
+        font-size: 2vh;
+        color: #004A59;
+        margin: 5%;
+    }

@@ -5,6 +5,138 @@
 @{
     ViewData["Title"] = "Contacts";
 }
+<div class="forcont">
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom"></h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+                </div>
+                <h3 class="fs-2">Featured title</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <a href="#" class="icon-link d-inline-flex align-items-center">
+                    Call to action
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                </a>
+            </div>
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+                </div>
+                <h3 class="fs-2">Featured title</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <a href="#" class="icon-link d-inline-flex align-items-center">
+                    Call to action
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                </a>
+            </div>
+            <div class="feature col">
+                <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+                </div>
+                <h3 class="fs-2">Featured title</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <a href="#" class="icon-link d-inline-flex align-items-center">
+                    Call to action
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="contacts">
+    <div class="contacts_box">
+
+    <div class='address'><p>222310, Минская обл., г. Молодечно, ул. Великий Гостинец, 143б, пом. №19, каб.559 </p></div>
+
+    <div class='contact'>
+        Контакты:<br />
+        8 (029) 65-08-105<br />
+        8 (0176) 75-95-15 <br />
+
+    </div>
+
+    <div class='mail'><p>email: cononenko.yury@yandex.by</p></div>
+    </div>
+</div>
+*@
+<div class="container-form">
+    <div class=' pb-2 border-bottom form-title'>Оставьте заявку на консультацию:</div>
+
+    <div class="row g-5 needs-validation" id="ConsForm" novalidate>
+        <div class="col-md-4">
+            <label for="Name" class="form-label">Ваше имя</label>
+            <input type="text" name="Name" class="form-control" id="Name" value="" required>
+
+        </div>
+
+
+        <div class="col-md-4">
+            <label for="LastName" class="form-label">Фамилия</label>
+            <input type="text" name="LastName" class="form-control" id="LastName" value="" required>
+
+        </div>
+
+
+        <div class="col-md-4">
+            <label for="Email" class="form-label">Ваш email</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@@</span>
+                <input type="text" name="Email" class="form-control" id="Email" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Введите email.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="Number" class="form-label">Ваш телефон</label>
+            <div class="input-group has-validation">
+                @*<span class="input-group-text" id="inputGroupPrepend"></span>*@
+                <input type="text" class="form-control" id="Number" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Введите ваш телефон.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <label for="City" class="form-label">Город</label>
+            <input type="text" class="form-control" id="City" required>
+            <div class="invalid-feedback">
+                Введите город.
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <label for="Letter" class="form-label">Сообщение</label>
+            <input type="text" class="form-control" id="Letter" required>
+            <div class="invalid-feedback">
+                Введите сообщение.
+            </div>
+        </div>
+
+        @*
+        <div class="col-12">
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+        You must agree before submitting.
+        </div>
+        </div>
+        </div>*@
+        <div class="col-12">
+            <button class="btn btn-dark" id="btnGet" type="submit">Отправить</button>
+        </div>
+    </div>
+</div>
 <h1>@ViewData["Title"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
