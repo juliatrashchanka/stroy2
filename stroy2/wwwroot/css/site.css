@@ -60,6 +60,16 @@ body {
 /* margin-right: 60%; */
 }
 
+.feed_img {
+    /*display: flex;*/
+    align-content: center;
+    max-width: 80%;
+    height: 70%;
+    hover img{
+    width: 500px;
+    }
+}
+
 .inf_text_box {
     display: flex;
     flex-direction: column;
@@ -155,7 +165,7 @@ body {
     margin-top: 5vh;
 }
 
-.card-img-top{
+.col{
 
 
 }
