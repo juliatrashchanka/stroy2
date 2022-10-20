@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\picture\atsootv1.jpg" />
+    <None Include="wwwroot\picture\atsootv2.jpg" />
+    <None Include="wwwroot\picture\atsootv3.jpg" />
+    <None Include="wwwroot\picture\tehcomp1.jpg" />
+    <None Include="wwwroot\picture\tehcomp2.jpg" />
+    <None Include="wwwroot\picture\tehcomp3.jpg" />
+    <None Include="wwwroot\picture\tehcomp4.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />

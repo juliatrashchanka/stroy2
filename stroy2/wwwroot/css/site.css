@@ -86,7 +86,7 @@ body {
 }
 
 .dop-new {
-    height: 150px;
+    height: 250px;
 }
 
 .services_box_top {
@@ -146,15 +146,25 @@ body {
 }
 
 .project{
-    background-color: #a79c5ff8
+    background-color: #a79c5ff8;
+    margin-top:5vh;
+    margin-bottom:10vh;
 }
 
-.feature  {
-   
+.project_box {
+    margin-top: 5vh;
+}
+
+.card-img-top{
+
+
+}
+
+.feature {
     background: white;
     max-width: 32%;
     height: 25vh;
-
+    box-shadow: 5px 5px 15px 0px #808080;
 }
 
 .contact_box{
