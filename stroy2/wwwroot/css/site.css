@@ -65,11 +65,62 @@ body {
     align-content: center;
     max-width: 80%;
     height: 70%;
-    hover img{
-    width: 500px;
-    }
+     
 }
 
+.project1 {
+    margin-left: 6%;
+    max-width: 60%;
+}
+.project6 {
+    max-width: 30%;
+}
+
+.project_box3{
+    gap: 7%;
+}
+
+.project5{
+    margin-left: 5%;
+
+}
+
+/*.in {
+  
+}*/
+
+    /* Отображение миниатюр */
+
+    /*.in img {
+        max-width: 80%;
+        border: 5px solid #ccc;
+    }*/
+
+        /* Выделение миниатюры при наведении */
+
+        /*.in img:hover {
+            width: 300px;
+            border: 5px solid red;
+            cursor: pointer;
+            background-color: #808080;
+        }*/
+
+/* Скрытый контейнер с большим изображением */
+
+/*#img_container {
+    position: absolute;
+    display: none;
+    left: 50%;
+    margin-left: -350px;
+    z-index: 999;
+    top: 100px;
+}*/
+
+    /* Бордюр изображения */
+    /*#img_container img {
+        border: 2px solid #2e2e41;
+    }*/  
+ 
 .inf_text_box {
     display: flex;
     flex-direction: column;

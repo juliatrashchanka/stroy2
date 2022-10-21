@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
     ViewData["Title"] = "";
 }
 <h1>@ViewData["Title"]</h1>
@@ -13,40 +17,78 @@
 
 <div class="dop"></div>
 
-<div class="container text-center">
+<div class="container text-center ">
     <div class="row align-items-start">
         <div class="col">
-            <img class="feed_img" src="~/picture/ot1.png">
+            <img class="feed_img minimized" src="~/picture/ot1.png">
         </div>
         <div class="col">
             <img class="feed_img" src="~/picture/ot2.png">
         </div>
-      @*  <div class="col">
-            <img class="feed_img" src="~/picture/ot2.png">
-        </div>*@
+   
     </div>
+
+    <div class="dop"></div>
+
     <div class="row align-items-center">
         <div class="col">
-            One of three columns
+            <img class="feed_img" src="~/picture/ot3.png">
         </div>
         <div class="col">
-            One of three columns
+            <img class="feed_img" src="~/picture/ot4.png">
         </div>
-        <div class="col">
-            One of three columns
-        </div>
+       
     </div>
+
+    <div class="dop"></div>
+
     <div class="row align-items-end">
         <div class="col">
-            One of three columns
+            <img class="feed_img" src="~/picture/ot5.png">
         </div>
         <div class="col">
-            One of three columns
+            <img class="feed_img" src="~/picture/ot6.png">
+        </div>
+        
+    </div>
+
+    <div class="dop"></div>
+
+    <div class="row align-items-end">
+        <div class="col">
+            <img class="feed_img" src="~/picture/ot7.png">
         </div>
         <div class="col">
-            One of three columns
+            <img class="feed_img" src="~/picture/ot8.png">
         </div>
+
+    </div>
+
+    <div class="dop"></div>
+
+    <div class="row align-items-end">
+        <div class="col">
+            <img class="feed_img" src="~/picture/ot9.png">
+        </div>
+        <div class="col">
+            <img class="feed_img" src="~/picture/ot10.png">
+        </div>
+
     </div>
 </div>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <img class="inf_img" src="https://www.homestratosphere.com/wp-content/uploads/2018/10/woodworking-tools-100218-min.jpg">
+}
+@*<!--Контейнер в котором мы будем отображать большую картинку-->
+<div id="img_container"><img src="" width="900vh"></div>
+<!--Контейнер с миниатюрами-->
+<div class="in">
+    <img class="feed_img" src="~/picture/ot2.png">
+</div>
+
+*@
 
 <div class='dop-new'></div>
