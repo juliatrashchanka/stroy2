@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@using Microsoft.EntityFrameworkCore;
 @*@model IEnumerable<ModalBootstrap.Models.Feedbacks>*@
 
 @{
@@ -91,5 +92,6 @@
 
     @*@await Html.PartialAsync("PartialFeed")*@
 }
+
 
 <div class='dop-new'></div>

@@ -55,13 +55,47 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Выйти</button>
-                <button type="button" class="btn btn-primary">Сохранить</button>
+                <button type="button" id="btn-save" class="btn btn-dark">Сохранить</button>
             </div>
         </div>
     </div>
 </div>
-@*<base href="https://itchief.ru">*@
 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#btn-save").click(function () {
+                    debugger;
+
+                   let datat = {
+
+                    "client": $("#Name").val() ,
+                    "workname": $("#WorkName").val(),
+                    "period": $("#Period").val(),
+                    "comment": $("#Comment").val(),
+                    "contacts": $("#Contacts").val(),
+                    
+
+                    //{ "lastname": $("#LastName").val() }
+                   }       //{},
+               
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/PartialFeed",
+                        data: datat,//{ "name": $("#Name").val() }, /*{ "lastname": $("#LastName").val() }, { "email": $("#Email").val() }, { "number": $("#Number").val() }, { "city": $("#City").val() }, { "letter": $("#Letter").val() },*/
+                        success: function (response) {
+                            alert("Hello: ");
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+        </script>
 
 <link href="/examples/libs/bootstrap-5/bootstrap.min.css" rel="stylesheet">
 <script defer src="/examples/libs/bootstrap-5/bootstrap.bundle.min.js"></script>
