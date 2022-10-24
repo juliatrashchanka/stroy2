@@ -1,0 +1,67 @@
+﻿@*@model IEnumerable<ModalBootstrap.Models.Feedbacks>*@
+
+
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+    Оставить отзыв
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Оставить отзыв</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+            
+
+                <div class="col-md-4">
+                    <label for="Client" class="form-label">Заказчик</label>
+                    <textarea type="text" name="Client" style="width: 250px" class="form-control" id="Client" value="" required></textarea>
+
+                </div>
+
+                <div class="col-md-4">
+                    <label for="WorkName" class="form-label">Наименование работы</label>
+                    <textarea type="text" name="WorkName" style="width: 250px" class="form-control" id="WorkName" value="" required></textarea>
+
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Period" class="form-label">Период выполнения</label>
+                    <textarea type="text" name="Name" style="width: 200px" class="form-control" id="Period" value="" required></textarea>
+
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Comment" class="form-label">Отзыв</label>
+                    <textarea type="text" name="Name" style="width: 250px; height: 225px;" class="form-control" id="Comment" value="" required></textarea>
+                    <div class="invalid-feedback">
+                        Введите сообщение.
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <label for="Contacts" class="form-label">Ваши контактные данные</label>
+                    <textarea type="text" class="form-control" style="width: 250px; height: 75px;" id="Contacts" required></textarea>
+                   
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Выйти</button>
+                <button type="button" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<base href="https://itchief.ru">*@
+
+
+<link href="/examples/libs/bootstrap-5/bootstrap.min.css" rel="stylesheet">
+<script defer src="/examples/libs/bootstrap-5/bootstrap.bundle.min.js"></script>

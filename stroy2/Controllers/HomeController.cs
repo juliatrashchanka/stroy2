@@ -3,7 +3,10 @@ using Microsoft.Extensions.Logging;
 using stroy2.Data;
 using stroy2.Models;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+
 
 namespace stroy2.Controllers
 {
@@ -41,11 +44,31 @@ namespace stroy2.Controllers
         }
         public IActionResult Index(/*Consult test*/)
         {
+
+          
             //db.Consult.Add(test);
             //db.SaveChanges();
             return View();
         }
-    
+
+        public IActionResult PartialFeed(string client, string workname, string period, string comment, string contacts)
+        {
+            Feedbacks feed = new Feedbacks
+            {
+                Client = client,
+                WorkName = workname,
+                Period = period,
+                Comment = comment,
+                Contacts = contacts
+                             
+
+            };
+
+            db.Feedbacks.Add(feed);
+            db.SaveChanges();
+            return PartialView();
+        }
+
         public IActionResult Feedback()
         {
             return View();

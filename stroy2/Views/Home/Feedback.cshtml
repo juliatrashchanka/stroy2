@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@*@model IEnumerable<ModalBootstrap.Models.Feedbacks>*@
 
 @{
     ViewData["Title"] = "";
@@ -77,18 +78,18 @@
     </div>
 </div>
 
+<div class="dop"></div>
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <img class="inf_img" src="https://www.homestratosphere.com/wp-content/uploads/2018/10/woodworking-tools-100218-min.jpg">
-}
-@*<!--Контейнер в котором мы будем отображать большую картинку-->
-<div id="img_container"><img src="" width="900vh"></div>
-<!--Контейнер с миниатюрами-->
-<div class="in">
-    <img class="feed_img" src="~/picture/ot2.png">
-</div>
+    <h2 class="pb-2 border-bottom">Хотите оставить свой отзыв?</h2>
 
-*@
+     <div class="d-grid gap-2 col-6 mx-auto">
+        @await Html.PartialAsync("PartialFeed")
+      
+    </div>
+
+    @*@await Html.PartialAsync("PartialFeed")*@
+}
 
 <div class='dop-new'></div>
