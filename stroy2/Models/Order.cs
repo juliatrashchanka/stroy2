@@ -1,6 +1,6 @@
 ﻿namespace stroy2.Models
 {
-    public class Feedbacks
+    public class Order
     {
         public Guid Id { get; set; }
         public string? Client { get; set; }
@@ -11,6 +11,5 @@
 
         public string? Contacts { get; set; }
 
-        //public bool? Confirm { get; set; }
     }
 }

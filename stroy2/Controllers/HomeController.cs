@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using stroy2.Data;
 using stroy2.Models;
@@ -51,7 +52,7 @@ namespace stroy2.Controllers
             return View();
         }
 
-        public IActionResult PartialFeed(string client, string workname, string period, string comment, string contacts)
+        public IActionResult PartialFeed(string client, string workname, string period, string comment, string contacts, bool confirm=false)
         {
             Feedbacks feed = new Feedbacks
             {
@@ -59,8 +60,8 @@ namespace stroy2.Controllers
                 WorkName = workname,
                 Period = period,
                 Comment = comment,
-                Contacts = contacts
-                             
+                Contacts = contacts,
+                         
 
             };
 
@@ -85,11 +86,13 @@ namespace stroy2.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Catalog()
         {
             return View();
         }
+
+        [Authorize]
         public IActionResult Orders()
         {
             return View();
