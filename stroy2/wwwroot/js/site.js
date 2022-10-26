@@ -20,6 +20,7 @@
         }, false)
     })
 })()
+const carousel = new bootstrap.Carousel('#myCarousel')
 
 //$(document).ready(function () {
 

@@ -2,7 +2,25 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @using Microsoft.EntityFrameworkCore;
-@*@model IEnumerable<ModalBootstrap.Models.Feedbacks>*@
+@model IEnumerable<stroy2.Models.Feedbacks>
+
+@{
+    var docs = new Dictionary<int, string>
+            {
+
+                [0] = "ot1.png",
+                [1] = "ot2.png",
+                [2] = "ot3.png",
+                [3] = "ot4.png",
+                [4] = "ot5.png",
+                [5] = "ot6.png",
+                [6] = "ot7.png",
+                [7] = "ot8.png",
+                [8] = "ot9.png",
+                [9] = "ot10.png"
+            };
+
+}
 
 @{
     ViewData["Title"] = "";
@@ -19,64 +37,65 @@
 
 <div class="dop"></div>
 
+
 <div class="container text-center ">
-    <div class="row align-items-start">
-        <div class="col">
-            <img class="feed_img minimized" src="~/picture/ot1.png">
+
+    <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @*<div class="row align-items-center">*@
+            <div class="carousel-item active row align-items-center">
+               
+                <img src="~/picture/ot1.png" class="d-block w-100 feed_img" alt="...">
+             
+            </div>
+
+           @for (int i = 1; i < docs.Count-1; i+=2){
+
+            <div class="carousel-item">
+                    <img src="~/picture/@docs[i]" class="d-block w-100 feed_img" alt="...">
+            </div>
+
+            <div class="carousel-item">
+                    <img src="~/picture/@docs[i+1]" class="d-block w-100 feed_img" alt="...">
+            </div>
+
+           }
+
         </div>
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot2.png">
-        </div>
-   
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
-    <div class="dop"></div>
 
-    <div class="row align-items-center">
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot3.png">
-        </div>
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot4.png">
-        </div>
-       
-    </div>
 
-    <div class="dop"></div>
 
-    <div class="row align-items-end">
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot5.png">
-        </div>
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot6.png">
-        </div>
-        
-    </div>
 
-    <div class="dop"></div>
 
-    <div class="row align-items-end">
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot7.png">
-        </div>
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot8.png">
+
+
+
+@*    @for (int i = 0; i < docs.Count; i+=2){
+
+        <div class="row align-items-start">
+            <div class="col">
+                <img class="feed_img" src="~/picture/@docs[i]">
+            </div>
+            <div class="col">
+                <img class="feed_img" src="~/picture/@docs[i + 1]">
+            </div> 
+
         </div>
 
-    </div>
-
-    <div class="dop"></div>
-
-    <div class="row align-items-end">
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot9.png">
-        </div>
-        <div class="col">
-            <img class="feed_img" src="~/picture/ot10.png">
-        </div>
-
-    </div>
+        <div class="dop"></div>
+    }
+*@
+ 
 </div>
 
 <div class="dop"></div>
@@ -93,5 +112,27 @@
     @*@await Html.PartialAsync("PartialFeed")*@
 }
 
+<div class='dop'></div>
+
+@foreach (var item in Model)
+{
+
+    <div class="card text-center">
+        <div class="card-header" align="justify">
+
+            <h3> @item.Client </h3> <h6>Контактные данные: (@item.Contacts)</h6>
+        </div>
+        <div class="card-body">
+           
+            <h5 class="card-title">Наименование работы - "@item.WorkName"</h5>
+            <p class="card-text">@item.Comment</p>
+            @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+        </div>
+        <div class="card-footer text-muted">
+            Период выполнения работы: @item.Period
+        </div>
+    </div>
+    <div class='dop'></div>
+}
 
 <div class='dop-new'></div>

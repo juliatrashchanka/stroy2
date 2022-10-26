@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using stroy2.Data;
 using stroy2.Models;
 using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 
 namespace stroy2.Controllers
@@ -16,6 +13,7 @@ namespace stroy2.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private ApplicationDbContext db;
+
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             db = context;
@@ -25,6 +23,8 @@ namespace stroy2.Controllers
         [HttpPost]
         public JsonResult GetData(string name, string lastname, string email, string number, string city, string letter)
         {
+
+
             Consult cons = new Consult
             {
 
@@ -46,13 +46,13 @@ namespace stroy2.Controllers
         public IActionResult Index(/*Consult test*/)
         {
 
-          
+
             //db.Consult.Add(test);
             //db.SaveChanges();
             return View();
         }
 
-        public IActionResult PartialFeed(string client, string workname, string period, string comment, string contacts, bool confirm=false)
+        public IActionResult PartialFeed(string client, string workname, DateTime period, string comment, string contacts, bool confirm = false)
         {
             Feedbacks feed = new Feedbacks
             {
@@ -61,7 +61,7 @@ namespace stroy2.Controllers
                 Period = period,
                 Comment = comment,
                 Contacts = contacts,
-                         
+
 
             };
 
@@ -69,11 +69,14 @@ namespace stroy2.Controllers
             db.SaveChanges();
             return PartialView();
         }
-
-        public IActionResult Feedback()
+        public async Task<IActionResult> Feedback()
         {
-            return View();
+            return View(await db.Feedbacks.ToListAsync());
         }
+        //public IActionResult Feedback()
+        //{
+        //    return View();
+        //}
         public IActionResult Projects()
         {
             return View();
