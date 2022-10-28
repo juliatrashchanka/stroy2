@@ -8,6 +8,8 @@ namespace stroy2.Data
     {
         public DbSet<Consult> Consult { get; set; }
         public DbSet<Feedbacks> Feedbacks { get; set; }
+
+        public DbSet<Order> Order { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

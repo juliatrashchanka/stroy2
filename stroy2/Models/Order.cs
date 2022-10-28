@@ -3,13 +3,13 @@
     public class Order
     {
         public Guid Id { get; set; }
-        public string? Client { get; set; }
-        public string? WorkName { get; set; }
-        public string? Period { get; set; }
+       
+        public string? Work { get; set; }
+        public string? Locality { get; set; }
 
-        public string? Comment { get; set; }
+        public string? Volume { get; set; }
 
-        public string? Contacts { get; set; }
+        public string? Material { get; set; }
 
     }
 }

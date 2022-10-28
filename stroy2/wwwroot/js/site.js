@@ -22,38 +22,28 @@
 })()
 const carousel = new bootstrap.Carousel('#myCarousel')
 
-//$(document).ready(function () {
+$(function () {
+    var PlaceHolderElement=$('#PlaceHolderHere')
+    $('button[data-toggle="ajax-modal"]').click(function (event) {
 
+        var url = $(this).data('url');
+        $.get(url).done(function (data) {
+            PlaceHolderElement.html(data);
+            PlaceHolderElement.find('.modal').modal('show');
 
+        })
+    })
 
-//    // При клике на миниатюру
+    PlaceHolderElement.on('click', '[data-save="modal"]', function (event) {
+        var form = $(this).parents('.modal').find('form');
+        var actionUrl = form.attr('action');
+        var sendData = form.serialize();
+        $.post(actionUrl, sendData).done(function (data) {
 
-//    $('.in img').click(function () {
+            PlaceHolderElement.find('.modal').modal('hide');
 
-//        // Берем свойство SRC миниатюры
+        })
 
-//        // (можно картинку положить в ссылку и брать значение href
+    })
 
-//        // для того, чтобы не грузить большие картинки изначально
-
-//        // а загружать сначало миниатюры и только при клике открывать
-
-//        // большое изображение, что будет целесообразнее).
-
-//        var imgSrc = $(this).attr("src");
-
-//        // Задаем свойство SRC картинке, которая в скрытом диве.
-
-//        $('#img_container img').attr({ src: imgSrc });
-
-//        // Показываем скрытый контейнер
-
-//        $('#img_container').fadeIn('slow');
-
-//    });
-
-//    // По клику на большое изображение, скрываем его
-//    $('#img_container').click(function () {
-//        $(this).fadeOut();
-//    });
-//});
+})

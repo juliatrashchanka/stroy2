@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using stroy2.Data;
 using stroy2.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 
 namespace stroy2.Controllers
@@ -14,10 +16,14 @@ namespace stroy2.Controllers
 
         private ApplicationDbContext db;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        private UserManager <ApplicationDbContext> _user;
+        //private ApplicationDbContext _context;
+       
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager <ApplicationDbContext> user)
         {
             db = context;
             _logger = logger;
+            _user = user;
         }
 
         [HttpPost]
@@ -52,7 +58,7 @@ namespace stroy2.Controllers
             return View();
         }
 
-        public IActionResult PartialFeed(string client, string workname, DateTime period, string comment, string contacts, bool confirm = false)
+        public IActionResult PartialFeed(string client, string workname, string period, string comment, string contacts, bool confirm = false)
         {
             Feedbacks feed = new Feedbacks
             {
@@ -67,12 +73,15 @@ namespace stroy2.Controllers
 
             db.Feedbacks.Add(feed);
             db.SaveChanges();
-            return PartialView();
+            string test = "success";
+            //return Json(test);
+            return Json(test);
         }
         public async Task<IActionResult> Feedback()
         {
             return View(await db.Feedbacks.ToListAsync());
         }
+       
         //public IActionResult Feedback()
         //{
         //    return View();
@@ -95,11 +104,52 @@ namespace stroy2.Controllers
             return View();
         }
 
+        public IActionResult PartialFeed()
+        {
+            return PartialView();
+        }
+
+        
+
         [Authorize]
         public IActionResult Orders()
         {
-            return View();
+            //var listofOrders = db.Order.ToList();
+            //return View(listofOrders); //(for admin)
+            //var UserId = _userManager.GetUserId(User);
+
+
+            var listofOrders = db.Order.ToList();
+            return View(listofOrders);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            Order ord = new Order();
+            return PartialView("OrderModelPartial", ord);
+        }
+
+        [HttpPost]
+        public object Create(Guid id, string work, string locality , string volume , string material )
+        {
+           
+            Order ord = new Order() { 
+
+                Id=id,
+                Work=work,
+                Locality=locality,  
+                Volume=volume,
+                Material=material,
+
+            };
+
+            db.Order.Add(ord);
+            db.SaveChanges();
+
+            return RedirectToAction("Orders");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

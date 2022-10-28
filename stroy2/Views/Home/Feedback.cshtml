@@ -116,23 +116,26 @@
 
 @foreach (var item in Model)
 {
+    if (@item.Confirm == true)
+    {
 
-    <div class="card text-center">
-        <div class="card-header" align="justify">
+        <div class="card text-center">
+            <div class="card-header" align="justify">
 
-            <h3> @item.Client </h3> <h6>Контактные данные: (@item.Contacts)</h6>
+                <h3> @item.Client </h3> <h6>Контактные данные: (@item.Contacts)</h6>
+            </div>
+            <div class="card-body">
+
+                <h5 class="card-title">Наименование работы - "@item.WorkName"</h5>
+                <p class="card-text">@item.Comment</p>
+                @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+            </div>
+            <div class="card-footer text-muted">
+                Период выполнения работы: @item.Period
+            </div>
         </div>
-        <div class="card-body">
-           
-            <h5 class="card-title">Наименование работы - "@item.WorkName"</h5>
-            <p class="card-text">@item.Comment</p>
-            @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
-        </div>
-        <div class="card-footer text-muted">
-            Период выполнения работы: @item.Period
-        </div>
-    </div>
-    <div class='dop'></div>
+        <div class='dop'></div>
+    }
 }
 
 <div class='dop-new'></div>
