@@ -19,11 +19,11 @@ namespace stroy2.Controllers
         private UserManager <ApplicationDbContext> _user;
         //private ApplicationDbContext _context;
        
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager <ApplicationDbContext> user)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context/*, UserManager <ApplicationDbContext> user*/)
         {
             db = context;
             _logger = logger;
-            _user = user;
+            //_user = user;
         }
 
         [HttpPost]
@@ -112,16 +112,30 @@ namespace stroy2.Controllers
         
 
         [Authorize]
-        public IActionResult Orders()
+        public async Task<IActionResult> Orders()
         {
             //var listofOrders = db.Order.ToList();
             //return View(listofOrders); //(for admin)
             //var UserId = _userManager.GetUserId(User);
 
-
-            var listofOrders = db.Order.ToList();
-            return View(listofOrders);
+          //  var id =  User.Identity.Name;
+            //var userName = user.id;
+          
+            //var listofOrders = db.Order.ToList();
+            return View(await db.Order.ToListAsync());
         }
+        //public async Task<IActionResult> Details(string work)
+        //{
+       
+           
+        //        Order ord = await db.Order.FirstOrDefaultAsync(p => p.Work == work);
+        //        if (ord != null)
+        //            return View(ord);
+         
+        //    return NotFound();
+        //}
+
+
 
         [HttpGet]
         public IActionResult Create()
@@ -131,12 +145,13 @@ namespace stroy2.Controllers
         }
 
         [HttpPost]
-        public object Create(Guid id, string work, string locality , string volume , string material )
+        public object Create(Guid id, /*string name,*/string work, string locality , string volume , string material )
         {
            
             Order ord = new Order() { 
 
                 Id=id,
+                //Name=name,
                 Work=work,
                 Locality=locality,  
                 Volume=volume,
@@ -149,6 +164,19 @@ namespace stroy2.Controllers
 
             return RedirectToAction("Orders");
         }
+
+        //public IActionResult Edit(Guid id)
+        //{
+        //    var order=db.Order.FirstOrDefault(p => p.Id==id);
+        //    return PartialView("EditOrderPartial", order);
+        //}
+        //[HttpPost]
+        //public IActionResult Edit(Order ord)
+        //{
+        //    db.Order.Update(ord);
+        //    db.SaveChanges();
+        //    return PartialView("EditOrderPartial", ord);
+        //}
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

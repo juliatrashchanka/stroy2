@@ -6,19 +6,21 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
+
  
 <div id="PlaceHolderHere"></div>
 
-<button type="button" class="btn btn-dark" data-toggle="ajax-modal" data-target="#addOrder" data-url="@Url.Action("Create")">Добавить заказ </button>
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action("Create")">Добавить заказ </button>
 <table class="table">
 
     <tread>
         <tr>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.Id)
-            </th>
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Work)
+                Наименование работы
             </th>
 
 
@@ -32,16 +34,16 @@
         @foreach (var item in Model)
         {
             <tr>
+              @*  <td>
+                    @item.Id
+                </td>*@
                 <td>
-                    @Html.DisplayNameFor(model => model.Id)
+                    @item.Work
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => model.Work)
-                </td>
-                <td>
-                    <button type="button" class="btn btn-dark" data-toggle="ajax-modal" data-target="#addOrder" data-url="@Url.Action($"Edit/{item.Id}")">Изменить </button>
-                    <button type="button" class="btn btn-dark" data-toggle="ajax-modal" data-target="#addOrder" data-url="@Url.Action($"Details/{item.Id}")">Информация</button>
-                    <button type="button" class="btn btn-dark" data-toggle="ajax-modal" data-target="#ddOrder" data-url="@Url.Action($"Delete/{item.Id}")">Удалить </button>
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action("Edit")">Изменить </button>
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action($"Details/{item.Id}")">Информация</button>
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action($"Delete/{item.Id}")">Удалить </button>
 
                 </td>
 

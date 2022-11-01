@@ -1,4 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+﻿  // Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code
@@ -22,9 +22,11 @@
 })()
 const carousel = new bootstrap.Carousel('#myCarousel')
 
+
+
 $(function () {
     var PlaceHolderElement=$('#PlaceHolderHere')
-    $('button[data-toggle="ajax-modal"]').click(function (event) {
+    $('button[data-toggle="modal"]').click(function (event) {
 
         var url = $(this).data('url');
         $.get(url).done(function (data) {
@@ -41,9 +43,16 @@ $(function () {
         $.post(actionUrl, sendData).done(function (data) {
 
             PlaceHolderElement.find('.modal').modal('hide');
-
+            
         })
 
     })
+    //$("#modal_close").on('click', '[data-dismiss="modal"]', function (event) {
+    //    modal.hide()
+    //}
+        //Event.CLICK_DISMISS,
+        //Selector.DATA_DISMISS,
+     
+      )
 
 })
