@@ -31,6 +31,9 @@
 
     @*</table>*@
         <tbody>
+        <div id="modDialog" class="modal fade">
+            <div id="dialogContent" class="modal-dialog"></div>
+        </div>
         @foreach (var item in Model)
         {
             <tr>
@@ -41,9 +44,12 @@
                     @item.Work
                 </td>
                 <td>
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action("Edit")">Изменить </button>
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action($"Details/{item.Id}")">Информация</button>
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action($"Delete/{item.Id}")">Удалить </button>
+                    <button type="button" class="btn  btn-light" style="">@Html.ActionLink("Изменить ", "EditOrderPartial", new { id =item.Id }, new { @class = "ord" })</button>
+                   @* <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="*@
+
+                    <button type="button" class="btn  btn-light" style="">@Html.ActionLink("Подробнее ", "PartialDetails", new { id =item.Id }, new { @class = "ord" })</button>
+                   @*>Информация</button>*@
+                    <button type="button" class="btn  btn-light" style=""><a asp-action="DeleteOrder" asp-controller="Home" asp-route-id="@item.Id">Удалить</a></button>
 
                 </td>
 
@@ -52,3 +58,20 @@
         </tbody>
 
 </table>
+@section scripts
+    {
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".ord").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+}

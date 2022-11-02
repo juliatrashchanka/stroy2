@@ -1,4 +1,5 @@
 ﻿@model Order
+
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -9,13 +10,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="addOrderLabel">Добавить заказ</h4>
-                <button type="button" class="close" data-dismiss="modal">
+                <button type="button" class="close" data-bs-dismiss="modal">
                     <span>x</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <form action="Create" asp-route-id="@Model.Id">
+                <form action="EditOrderPartial" route="@Model" >
 
                     <div class="form-group">
 
@@ -51,7 +52,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-dismiss="modal">Выйти</button>
+                <button type="button" class="btn btn-dark" data--bs-dismiss="modal">Выйти</button>
                 <button type="button" class="btn btn-dark" data-save="modal">Сохранить</button>
             </div>
 

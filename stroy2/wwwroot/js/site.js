@@ -47,12 +47,18 @@ $(function () {
         })
 
     })
-    //$("#modal_close").on('click', '[data-dismiss="modal"]', function (event) {
-    //    modal.hide()
-    //}
-        //Event.CLICK_DISMISS,
-        //Selector.DATA_DISMISS,
-     
-      )
+
 
 })
+
+//$(function () {
+//    $.ajaxSetup({ cache: false });
+//    $(".ord").click(function (e) {
+
+//        e.preventDefault();
+//        $.get(this.href, function (data) {
+//            $('#dialogContent').html(data);
+//            $('#modDialog').modal('show');
+//        });
+//    });
+//})

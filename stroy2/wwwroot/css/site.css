@@ -20,7 +20,10 @@ body {
     background-color: #FFFCD9;
 }
 
+.ord{
 
+    text-decoration-color: white;
+}
 
 .main_box {
     display: flex;

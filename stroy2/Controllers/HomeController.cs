@@ -6,6 +6,7 @@ using stroy2.Data;
 using stroy2.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography;
 
 
 namespace stroy2.Controllers
@@ -126,57 +127,116 @@ namespace stroy2.Controllers
         }
         //public async Task<IActionResult> Details(string work)
         //{
-       
-           
+
+
         //        Order ord = await db.Order.FirstOrDefaultAsync(p => p.Work == work);
         //        if (ord != null)
         //            return View(ord);
-         
+
         //    return NotFound();
         //}
+        public async Task<IActionResult> PartialDetails(Guid? id)
+        {
+            if (id != null)
+            {
+                Order ord = await db.Order.FirstOrDefaultAsync(p => p.Id == id);
+                if (ord != null)
+                    return PartialView(ord);
+            }
+            return NotFound();
+        }
 
 
+        //[HttpGet]
+        //public IActionResult Create()
+        //{
+        //    Order ord = new Order();
+        //    return PartialView("OrderModelPartial", ord);
+        //}
 
+        //[HttpPost]
+        //public object Create(Guid id, /*string name,*/string work, string locality , string volume , string material )
+        //{
+
+        //    Order ord = new Order() { 
+
+        //        Id=id,
+        //        //Name=name,
+        //        Work=work,
+        //        Locality=locality,  
+        //        Volume=volume,
+        //        Material=material,
+
+        //    };
+
+        //    db.Order.Add(ord);
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Orders");
+        //}
         [HttpGet]
         public IActionResult Create()
         {
             Order ord = new Order();
             return PartialView("OrderModelPartial", ord);
         }
-
         [HttpPost]
-        public object Create(Guid id, /*string name,*/string work, string locality , string volume , string material )
+        public async Task<IActionResult> Create(Order ord)
         {
-           
-            Order ord = new Order() { 
-
-                Id=id,
-                //Name=name,
-                Work=work,
-                Locality=locality,  
-                Volume=volume,
-                Material=material,
-
-            };
-
             db.Order.Add(ord);
-            db.SaveChanges();
-
+            await db.SaveChangesAsync();
             return RedirectToAction("Orders");
         }
 
-        //public IActionResult Edit(Guid id)
-        //{
-        //    var order=db.Order.FirstOrDefault(p => p.Id==id);
-        //    return PartialView("EditOrderPartial", order);
-        //}
-        //[HttpPost]
-        //public IActionResult Edit(Order ord)
-        //{
-        //    db.Order.Update(ord);
-        //    db.SaveChanges();
-        //    return PartialView("EditOrderPartial", ord);
-        //}
+
+        public async Task<IActionResult> EditOrderPartial(Guid? id)
+        {
+            if (id != null)
+            {
+                Order ord = await db.Order.FirstOrDefaultAsync(p => p.Id == id);
+                if (ord != null)
+                    return PartialView(ord);
+            }
+            return NotFound();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditOrderPartial(Order ord)
+        {
+            db.Order.Add(ord);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Orders");
+        }
+
+        [HttpGet]
+        [ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(Guid? id)
+        {
+            if (id != null)
+            {
+               Order ord = await db.Order.FirstOrDefaultAsync(p => p.Id == id);
+                if (ord != null)
+                    return View(ord);
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteOrder(Guid? id)
+        {
+            if (id != null)
+            {
+                Order ord = await db.Order.FirstOrDefaultAsync(p => p.Id == id);
+                if (ord != null)
+                {
+                    db.Order.Remove(ord);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Orders");
+                }
+            }
+            return NotFound();
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
