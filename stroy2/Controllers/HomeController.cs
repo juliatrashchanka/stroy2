@@ -204,20 +204,20 @@ namespace stroy2.Controllers
         [HttpPost]
         public async Task<IActionResult> EditOrderPartial(Order ord)
         {
-            db.Order.Add(ord);
+            db.Order.Update(ord);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
         }
 
         [HttpGet]
-        [ActionName("Delete")]
+        [ActionName("DeleteOrder")]
         public async Task<IActionResult> ConfirmDelete(Guid? id)
         {
             if (id != null)
             {
                Order ord = await db.Order.FirstOrDefaultAsync(p => p.Id == id);
                 if (ord != null)
-                    return View(ord);
+                    return PartialView(ord);
             }
             return NotFound();
         }
