@@ -7,7 +7,7 @@ using stroy2.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography;
-
+using System.Security.Claims;
 
 namespace stroy2.Controllers
 {
@@ -17,14 +17,14 @@ namespace stroy2.Controllers
 
         private ApplicationDbContext db;
 
-        private UserManager <ApplicationDbContext> _user;
-        //private ApplicationDbContext _context;
+      private UserManager <IdentityUser> _user;
+      //  private ApplicationDbContext _context;
        
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context/*, UserManager <ApplicationDbContext> user*/)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager <IdentityUser> user)
         {
             db = context;
             _logger = logger;
-            //_user = user;
+            _user = user;
         }
 
         [HttpPost]
@@ -117,24 +117,16 @@ namespace stroy2.Controllers
         {
             //var listofOrders = db.Order.ToList();
             //return View(listofOrders); //(for admin)
-            //var UserId = _userManager.GetUserId(User);
+           
 
-          //  var id =  User.Identity.Name;
-            //var userName = user.id;
-          
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserName=currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+     
+
             //var listofOrders = db.Order.ToList();
             return View(await db.Order.ToListAsync());
         }
-        //public async Task<IActionResult> Details(string work)
-        //{
-
-
-        //        Order ord = await db.Order.FirstOrDefaultAsync(p => p.Work == work);
-        //        if (ord != null)
-        //            return View(ord);
-
-        //    return NotFound();
-        //}
+     
         public async Task<IActionResult> PartialDetails(Guid? id)
         {
             if (id != null)
@@ -147,12 +139,6 @@ namespace stroy2.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult Create()
-        //{
-        //    Order ord = new Order();
-        //    return PartialView("OrderModelPartial", ord);
-        //}
 
         //[HttpPost]
         //public object Create(Guid id, /*string name,*/string work, string locality , string volume , string material )
@@ -175,9 +161,21 @@ namespace stroy2.Controllers
         //    return RedirectToAction("Orders");
         //}
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(Guid id, /*string name,*/string work, string locality, string volume, string material)
         {
-            Order ord = new Order();
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Order ord = new Order {
+                  
+                 Id = id,
+                 UserName= "2",
+                  Work=work,
+                  Locality=locality,  
+                  Volume=volume,
+                 Material=material,
+            
+            };
+
             return PartialView("OrderModelPartial", ord);
         }
         [HttpPost]
