@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace stroy2.Controllers
 {
@@ -123,7 +124,10 @@ namespace stroy2.Controllers
             string currentUserName=currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
      
 
-            //var listofOrders = db.Order.ToList();
+            var listofOrders = db.Order.ToList();
+          
+            bool exists = listofOrders.Exists(p =>p.Work=="Work");
+
             return View(await db.Order.ToListAsync());
         }
      
@@ -161,26 +165,28 @@ namespace stroy2.Controllers
         //    return RedirectToAction("Orders");
         //}
         [HttpGet]
-        public IActionResult Create(Guid id, /*string name,*/string work, string locality, string volume, string material)
+        public IActionResult Create()
+        {
+     
+
+            return PartialView("OrderModelPartial");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Guid id, /*string name,*/string work, string locality, string volume, string material)
         {
             ClaimsPrincipal currentUser = this.User;
             string currentUserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-            Order ord = new Order {
-                  
-                 Id = id,
-                 UserName= "2",
-                  Work=work,
-                  Locality=locality,  
-                  Volume=volume,
-                 Material=material,
-            
-            };
+            Order ord = new Order
+            {
 
-            return PartialView("OrderModelPartial", ord);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create(Order ord)
-        {
+                Id = id,
+                UserName = "2",
+                Work = work,
+                Locality = locality,
+                Volume = volume,
+                Material = material,
+
+            };
             db.Order.Add(ord);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
