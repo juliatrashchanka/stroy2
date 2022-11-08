@@ -126,9 +126,11 @@ namespace stroy2.Controllers
 
             var listofOrders = db.Order.ToList();
           
-            bool exists = listofOrders.Exists(p =>p.Work=="Work");
+            bool exists = listofOrders.Exists(p =>p.UserName==currentUserName);
 
-            return View(await db.Order.ToListAsync());
+           List <Order> listCurrentUser = listofOrders.FindAll(p => p.UserName == currentUserName);
+
+            return View(listCurrentUser);
         }
      
         public async Task<IActionResult> PartialDetails(Guid? id)
@@ -180,7 +182,7 @@ namespace stroy2.Controllers
             {
 
                 Id = id,
-                UserName = "2",
+                UserName = currentUserName,
                 Work = work,
                 Locality = locality,
                 Volume = volume,
