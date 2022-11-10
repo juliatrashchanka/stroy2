@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace stroy2.Controllers
 {
@@ -174,7 +176,7 @@ namespace stroy2.Controllers
             return PartialView("OrderModelPartial");
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Guid id, /*string name,*/string work, string locality, string volume, string material)
+        public JsonResult Create(Guid id, /*string name,*/string work, string locality, string volume, string material)
         {
             ClaimsPrincipal currentUser = this.User;
             string currentUserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -190,10 +192,35 @@ namespace stroy2.Controllers
 
             };
             db.Order.Add(ord);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Orders");
+             db.SaveChanges();
+            string test = "success";
+          
+            return Json(test);
         }
 
+        [HttpGet]
+        public JsonResult GetOrder()
+        {
+
+
+
+            ClaimsPrincipal currentUser = this.User;
+            string currentUserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+
+            var listofOrders = db.Order.ToList();
+
+            bool exists = listofOrders.Exists(p => p.UserName == currentUserName);
+
+            List<Order> listCurrentUser = listofOrders.FindAll(p => p.UserName == currentUserName);
+
+            //   return View(listCurrentUser);
+            // var json = JSON.stringify(listCurrentUser);
+            var json= JsonSerializer.Serialize(listCurrentUser);
+
+            //return Json(test);
+            return Json(json);
+        }
 
         public async Task<IActionResult> EditOrderPartial(Guid? id)
         {

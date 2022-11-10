@@ -53,7 +53,7 @@
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" id="modal_close" data-bs-dismiss="modal">Выйти</button>
-                <button type="button" class="btn btn-dark" data-save="modal">Сохранить</button>
+                <button type="button" class="btn btn-dark"  id="create_order"  data-save="modal">Сохранить</button>
             </div>
 
         </div>    
@@ -64,3 +64,36 @@
 
 
 </div>
+
+<script src ="~/js/script.js"></script>
+@*<script>
+                $(function () {
+                $("#create_order").click(function () {
+                    debugger;
+
+                   let datata = {
+
+                    "work": $("#Work").val() ,
+                    "locality": $("#Locality").val(),
+                    "volume": $("#Volume").val(),
+                    "material": $("#Material").val(),
+                   
+                   }       
+               
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/Create",
+                        data: datata,
+                        success: function (response) {
+                            alert("Hello: ");
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                });
+            });
+</script>*@

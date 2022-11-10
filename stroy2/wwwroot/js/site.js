@@ -51,14 +51,13 @@ $(function () {
 
 })
 
-//$(function () {
-//    $.ajaxSetup({ cache: false });
-//    $(".ord").click(function (e) {
+//var Uri = '/Home/Create';
 
-//        e.preventDefault();
-//        $.get(this.href, function (data) {
-//            $('#dialogContent').html(data);
-//            $('#modDialog').modal('show');
-//        });
+//function getOrders() {
+//    ajaxHelper(Uri, 'GET').done(function (data) {
+//      //  self.authors(data);
 //    });
-//})
+//}
+
+   
+
