@@ -18,16 +18,20 @@
         <div id="dialogContent" class="modal-dialog"></div>
     </div>
 
+    <thead>
         <tr>
-           
-            <th>
+
+            <th style="padding-right: 30vw">
                 Наименование работы
             </th>
-
-
         </tr>
+    </thead>
+      
+       
 
-   
+    <tbody class="tableScript" id="tableScript">
+
+    @*<script src="~/js/scriptForTable.js"></script>*@
               
 
         @foreach (var item in Model)
@@ -39,22 +43,21 @@
                 </td>
                 <td>
                     <button type="button" class="btn  btn-light" style="">@Html.ActionLink("Изменить ", "EditOrderPartial", new { id =item.Id }, new { @class = "ord" })</button>
-                  @* <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="*@
-
-                    @*<button type="button" class="btn  btn-light" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action("EditOrderPartial")">изменить@*<a asp-action="DeleteOrder" asp-controller="Home" asp-route-id="@item.Id">Удалить</a></button>*@
-
+              
+    
                     <button type="button" class="btn  btn-light" style="">@Html.ActionLink("Подробнее ", "PartialDetails", new { id =item.Id }, new { @class = "ord" })</button>
-                   @*>Информация</button>*@
+                
                     <button type="button" class="btn  btn-light" style="">@Html.ActionLink("Удалить ", "DeleteOrder", new { id =item.Id }, new { @class = "ord" })</button>
                 </td>
                 
             </tr>
 
-        <script src="~/js/scriptForTable.js"></script>
+    
 
            
         }
-    
+
+    </tbody>
 
 </table>
 @section scripts
