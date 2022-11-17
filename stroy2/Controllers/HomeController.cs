@@ -237,6 +237,9 @@ namespace stroy2.Controllers
         [HttpPost]
         public async Task<IActionResult> EditOrderPartial(Order ord)
         {
+            ClaimsPrincipal currentUser = this.User;
+            ord.UserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             db.Order.Update(ord);
             await db.SaveChangesAsync();
             return RedirectToAction("Orders");
