@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Roles\Create.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Roles\Create.cshtml" />
     <None Include="wwwroot\picture\atsootv1.jpg" />
     <None Include="wwwroot\picture\atsootv2.jpg" />
     <None Include="wwwroot\picture\atsootv3.jpg" />
@@ -34,6 +39,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\photo\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Roles\Create.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Roles\Create.cshtml" />
   </ItemGroup>
 
 </Project>

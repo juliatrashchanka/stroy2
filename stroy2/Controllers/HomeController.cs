@@ -201,25 +201,27 @@ namespace stroy2.Controllers
         [HttpGet]
         public JsonResult GetOrder()
         {
-
-
-
             ClaimsPrincipal currentUser = this.User;
-            string currentUserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var isUserExist = currentUser.FindFirst(ClaimTypes.NameIdentifier);
+            string currentUserName = string.Empty;
+            if (isUserExist != null)
+            {
+                currentUserName = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            }
 
 
             var listofOrders = db.Order.ToList();
 
-            bool exists = listofOrders.Exists(p => p.UserName == currentUserName);
+            //bool exists = listofOrders.Exists(p => p.UserName == currentUserName);
 
             List<Order> listCurrentUser = listofOrders.FindAll(p => p.UserName == currentUserName);
 
             //   return View(listCurrentUser);
-            // var json = JSON.stringify(listCurrentUser);
+           // var json = JSON.stringify(listCurrentUser);
             var json= JsonSerializer.Serialize(listCurrentUser);
 
-            //return Json(test);
             return Json(json);
+            
         }
 
         public async Task<IActionResult> EditOrderPartial(Guid? id)

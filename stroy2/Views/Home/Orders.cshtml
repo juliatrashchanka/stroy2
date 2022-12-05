@@ -6,21 +6,50 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
- 
+<div id="PlaceHolderHere"></div>
+
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addOrder" data-url="@Url.Action("Create")">Добавить заказ </button>
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<div class="dop"></div>
+
 <div class='liveExample'>
 
     <div  data-bind='simpleGrid: gridViewModel'> </div>
 
+    <div class="dop"></div>
+@*
     <button class ="btn btn-dark" data-bind='click: addItem'>
-        Add item
-    </button>
+       Добавить заказ
+    </button>*@
 
     <button class="btn btn-dark" data-bind='click: sortByName'>
-        Sort by name
+        Сортировать
     </button>
 
     <button class="btn btn-dark" data-bind='click: jumpToFirstPage, enable: gridViewModel.currentPageIndex'>
-        Jump to first page
+        Перейти к первой странице
     </button>
 
 </div>
+
+@section scripts{
+    <script src="~/js/ScriptOrder.js"></script>
+    <script type="text/javascript">
+      $(function(){
+          $.ajaxSetup({cashe:false});
+          $('.ord').click(function(e){
+              e.preventDefault();
+              $.get(this.href,function(data){
+                  $("#dialogContent").html(data);
+                    $("#modDialog").modal("show");
+              });
+          });
+
+      })  
+    
+    </script>
+}
